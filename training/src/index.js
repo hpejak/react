@@ -3,52 +3,67 @@ import ReactDom from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './style.css'
+import Card from "./Card";
 
 function Training() {
+    const titleText = "This is start of training"
+    const passingValue = "Passing FirstValue"
     const somePassingValue = "I am passing some value"
-    const someAdditionalData = 14
+    const someAdditionalData = 3
+
 
     return (
         <React.Fragment>
             <div className='container'>
-                <PageTitle someAdditionalData={someAdditionalData}/>
-                <PageBody somePassingValue={somePassingValue}/>
+                <PageTitle titleText={titleText} someAdditionalData={someAdditionalData} />
+                <PageBody passingValue={passingValue} somePassingValue={somePassingValue}>
+                    <p>Some additional text from children</p>
+                </PageBody>
             </div>
         </React.Fragment>
     );
 }
 
-const PageTitle = (props) => {
+const PageTitle = ({titleText, someAdditionalData}) => {
     return (
-        <div className="titleClass">
-            <h3 >This is start of Training {props.someAdditionalData}</h3>
+        <div className="titleClass" align="center">
+            <h2 >{ titleText + ' ' + someAdditionalData}</h2>
         </div>
     )
 }
 
 const PageBody = (props) => {
+    const {passingValue, somePassingValue, children}  = props;
     return (
         <div>
             <p>Training is in progress</p>
-            <p>{props.somePassingValue}</p>
-            <PageData firstInput={Data.data1} />
-            <PageData firstInput={Data.data2} />
+            <p>{passingValue}</p>
+            <p>{somePassingValue}</p>
+            {children}
+            <PageData />
         </div>
     )
 }
 
-const PageData = (props) =>  {
-    return(
-        <p>
-            {props.firstInput}
-        </p>
-    )
+const PageData = (props) => {
+    return (<section>
+        {data.map((dataObject) => {
+            return (
+                <Card {...dataObject} key={dataObject.id}/>
+            );
+        })}
+    </section>)
 }
 
 
-const Data = {
-    data1: 'Some of text for Page',
-    data2: 'Additional data for Page'
-};
+const data = [{
+    name: 'Some Text',
+    data: 'Data for Page',
+    id: 1,
+},{
+    name: 'Additional Text',
+    data: 'Additional data for Page',
+    id: 2,
+}];
 
 ReactDom.render(<Training/>,document.getElementById('training'))

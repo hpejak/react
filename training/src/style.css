@@ -9,3 +9,11 @@ body{
     background: azure;
     color: #222;
 }
+
+.pageData {
+    width: 200px;
+    border: 4px solid #ecdfcd;
+    border-radius: 5%;
+    mso-border-shadow: yes;
+    background-color: antiquewhite;
+}

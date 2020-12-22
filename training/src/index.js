@@ -3,7 +3,8 @@ import ReactDom from 'react-dom';
 
 import 'bootstrap/dist/css/bootstrap-grid.min.css'
 import './style.css'
-import Card from "./Card";
+import PageTitle from "./PageTitle";
+import PageBody from "./PageBody";
 
 function Training() {
     const titleText = "This is start of training"
@@ -15,8 +16,9 @@ function Training() {
     return (
         <React.Fragment>
             <div className='container'>
-                <PageTitle titleText={titleText} someAdditionalData={someAdditionalData} />
-                <PageBody passingValue={passingValue} somePassingValue={somePassingValue}>
+                <PageTitle titleText={titleText} someAdditionalData={someAdditionalData}/>
+                <PageBody passingValue={passingValue}
+                          somePassingValue={somePassingValue}>
                     <p>Some additional text from children</p>
                 </PageBody>
             </div>
@@ -24,46 +26,5 @@ function Training() {
     );
 }
 
-const PageTitle = ({titleText, someAdditionalData}) => {
-    return (
-        <div className="titleClass" align="center">
-            <h2 >{ titleText + ' ' + someAdditionalData}</h2>
-        </div>
-    )
-}
 
-const PageBody = (props) => {
-    const {passingValue, somePassingValue, children}  = props;
-    return (
-        <div>
-            <p>Training is in progress</p>
-            <p>{passingValue}</p>
-            <p>{somePassingValue}</p>
-            {children}
-            <PageData />
-        </div>
-    )
-}
-
-const PageData = (props) => {
-    return (<section>
-        {data.map((dataObject) => {
-            return (
-                <Card {...dataObject} key={dataObject.id}/>
-            );
-        })}
-    </section>)
-}
-
-
-const data = [{
-    name: 'Some Text',
-    data: 'Data for Page',
-    id: 1,
-},{
-    name: 'Additional Text',
-    data: 'Additional data for Page',
-    id: 2,
-}];
-
-ReactDom.render(<Training/>,document.getElementById('training'))
+ReactDom.render(<Training/>, document.getElementById('training'))

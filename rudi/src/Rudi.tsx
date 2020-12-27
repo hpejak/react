@@ -1,7 +1,6 @@
 import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useState} from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Rudi = () => {
 

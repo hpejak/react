@@ -1,6 +1,7 @@
 import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useState} from "react";
+import Core from "./Core";
 
 const Rudi = () => {
 
@@ -14,7 +15,7 @@ const Rudi = () => {
 
     return (
         <Container fluid="xl">
-            <Row className="justify-content-xl-center" >
+            <Row className="titleRow">
                 <Col xl={{span: 3, offset: 3}}>
                     <h1>
                         {greeting}
@@ -24,7 +25,16 @@ const Rudi = () => {
                     <Button className="titleBtn" onClick={onStart}>Let's Start</Button>
                 </Col>
             </Row>
-            <Menu />
+            <Row>
+                <Col xl={{span: 3}}>
+                    <Menu />
+                </Col>
+                <Col xl={{span: 9}}>
+                    <Core />
+                </Col>
+            </Row>
+
+
         </Container>
     )
 }

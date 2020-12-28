@@ -17,18 +17,21 @@ const Menu = () => {
 
     const changeItemDescription = (item) => {
 
-        const replacementIndex: number = menuRootItems.findIndex((menuRootItems) => menuRootItems.id === item.id);
-        const newMenuItem = {...item, description: 'Still no description'};
+        setMenuRootItems((startRootItems) => {
 
-        const newMenuItems = [...menuRootItems.slice(0, replacementIndex), newMenuItem, ...menuRootItems.slice(replacementIndex + 1)]
+            const replacementIndex: number = startRootItems.findIndex((menuRootItems) => menuRootItems.id === item.id);
+            const newMenuItem = {...item, description: 'Still no description'};
 
-        setMenuRootItems(newMenuItems);
+            return [...startRootItems.slice(0, replacementIndex), newMenuItem, ...startRootItems.slice(replacementIndex + 1)]
+
+        })
 
     }
 
     return (
         <div>
             {
+
                 menuRootItems.map((item: any) => {
                     const {id, name, tooltip} = item;
 

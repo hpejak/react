@@ -13,10 +13,22 @@ code {
 }
 
 
+.titleRow {
+  margin-bottom: 30px;
+}
+
 .titleBtn {
   margin-top: 10px;
 }
 
-.menuListItem{
+.menuListItem {
   margin-bottom: 5px;
+}
+
+.core {
+  width: 512px;
+}
+
+.coreBtn {
+  margin-right: 30px;
 }

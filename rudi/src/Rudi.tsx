@@ -1,6 +1,6 @@
 import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Core from "./Core";
 
 const Rudi = () => {
@@ -12,6 +12,9 @@ const Rudi = () => {
         rootName === 'Start' ? setRootName('Rudi') : setRootName('Start')
     }
 
+    useEffect(() => {
+        document.title = rootName;
+    } )
 
     return (
         <Container fluid="xl">

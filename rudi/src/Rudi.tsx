@@ -6,6 +6,8 @@ import Core from "./Core";
 const Rudi = () => {
 
     const [ rootName, setRootName ] = useState('Rudi');
+    const [ windowSize, setWindowSize ] = useState(window.innerWidth);
+
     let greeting = 'Hi, I am ' + rootName;
 
     const onStart = () => {
@@ -13,8 +15,15 @@ const Rudi = () => {
     }
 
     useEffect(() => {
-        document.title = rootName;
-    } )
+        if (rootName != '') document.title = rootName;
+    }, [rootName]);
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {setWindowSize(window.innerWidth)});
+        return () => {
+            window.removeEventListener('resize', () => {setWindowSize(window.innerWidth)})
+        }
+    })
 
     return (
         <Container fluid="xl">

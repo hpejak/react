@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 
 const api = 'https://pejaklab.ddns.net/Financije/Getters/getBudgetView.php'
 
-const Users = () => {
+const Budget = () => {
 
     const [budgetCat, setBudgetCat] = useState([])
 
@@ -17,6 +17,8 @@ const Users = () => {
         getBudgetCat();
     },[]);
 
+    if (budgetCat.length === 0) return (<p>No data</p>)
+
     return (
         <>
             <ul>
@@ -29,4 +31,4 @@ const Users = () => {
     );
 }
 
-export default Users;
+export default Budget;

@@ -2,7 +2,7 @@ import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import Core from "./Core";
-import Users from "./Users";
+import Budget from "./Budget";
 
 const Rudi = () => {
 
@@ -47,11 +47,9 @@ const Rudi = () => {
                     <Core />
                 </Col>
                 <Col xl={{span: 3}}>
-                    <Users />
+                    <Budget />
                 </Col>
             </Row>
-
-
         </Container>
     )
 }

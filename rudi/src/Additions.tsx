@@ -1,13 +1,11 @@
 import {Button} from "react-bootstrap";
-import {useEffect} from "react";
 
 const Additions = () => {
 
 
-
-    return(<>
-        <Button></Button>
-        </>)
+    return (<>
+        <Button>Btn</Button>
+    </>)
 }
 
 export default Additions;

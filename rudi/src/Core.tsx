@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button, Col} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 const Core = () => {
 

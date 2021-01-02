@@ -3,6 +3,7 @@ import {Button, Col, Container, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import Core from "./Core";
 import Budget from "./Budget";
+import Additions from "./Additions";
 
 const Rudi = () => {
 
@@ -45,7 +46,8 @@ const Rudi = () => {
                     <Menu />
                 </Col>
                 <Col xl={{span: 7}}>
-                    {rootName != 'Rudi' && <Core />}
+                    {rootName !== 'Rudi' && <Core />}
+                    <Additions />
                 </Col>
                 <Col xl={{span: 3}}>
                     <Budget />

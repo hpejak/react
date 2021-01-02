@@ -20,9 +20,7 @@ const Budget = () => {
     },[]);
 
 
-    if (isError) return (<p>Error fetching data</p>)
-
-    if (budgetCat.length === 0) return (<p>No data</p>)
+    if (budgetCat.length === 0) return (<p>{isError ? 'Error fetching data' : 'No data'}</p>);
 
     return (
         <>

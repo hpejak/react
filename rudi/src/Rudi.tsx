@@ -22,6 +22,7 @@ const Rudi = () => {
     useEffect(() => {
         window.addEventListener('resize', () => {setWindowSize(window.innerWidth)});
         console.log('Window size is ' + windowSize)
+
         return () => {
             window.removeEventListener('resize', () => {setWindowSize(window.innerWidth)})
         }
@@ -40,11 +41,11 @@ const Rudi = () => {
                 </Col>
             </Row>
             <Row>
-                <Col xl={{span: 2}}>
+                <Col xl={{span: 2}} className="menuCol">
                     <Menu />
                 </Col>
                 <Col xl={{span: 7}}>
-                    <Core />
+                    {rootName != 'Rudi' && <Core />}
                 </Col>
                 <Col xl={{span: 3}}>
                     <Budget />

@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button} from "react-bootstrap";
+import {Button, Col} from "react-bootstrap";
 
 const Core = () => {
 
@@ -14,18 +14,16 @@ const Core = () => {
     }
 
     return (
-        <>
-            <div className="core">
-                <h4>Play with useState and numbers</h4>
+        <div className="core col-xl-12" >
+            <h4>Play with useState and numbers</h4>
 
-                <h1>{numberValue}</h1>
+            <h1>{numberValue}</h1>
 
-                <Button variant="outline-danger" className="coreBtn" onClick={() => setNumberValue(numberValue - 1)}> Decrease </Button>
-                <Button variant="outline-info" className="coreBtn" onClick={() => setNumberValue(0)}> Reset </Button>
-                <Button variant="outline-success" className="coreBtn" onClick={increaseNumber}> Increase with Delay </Button>
+            <Button variant="outline-danger" className="coreBtn" onClick={() => setNumberValue(numberValue - 1)}> Decrease </Button>
+            <Button variant="outline-info" className="coreBtn" onClick={() => setNumberValue(0)}> Reset </Button>
+            <Button variant="outline-success" className="coreBtn" onClick={increaseNumber}> Increase with Delay </Button>
 
-            </div>
-        </>
+        </div>
     )
 }
 

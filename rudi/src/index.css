@@ -25,6 +25,10 @@ code {
   margin-bottom: 5px;
 }
 
+.menuCol {
+  padding-left: 0 !important;
+}
+
 .core {
   width: 512px;
 }

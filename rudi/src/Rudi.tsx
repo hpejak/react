@@ -40,10 +40,10 @@ const Rudi = () => {
                 </Col>
             </Row>
             <Row>
-                <Col xl={{span: 3}}>
+                <Col xl={{span: 2}}>
                     <Menu />
                 </Col>
-                <Col xl={{span: 6}}>
+                <Col xl={{span: 7}}>
                     <Core />
                 </Col>
                 <Col xl={{span: 3}}>

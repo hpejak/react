@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button, OverlayTrigger, Tooltip} from "react-bootstrap";
+import {Button, ListGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
 
 const Menu = () => {
 
@@ -30,22 +30,24 @@ const Menu = () => {
 
     return (
         <div>
+            <ListGroup>
             {
 
                 menuRootItems.map((item: any) => {
                     const {id, name, tooltip} = item;
 
                     return (
-                        <li key={id} className="menuListItem">
+                        <ListGroup.Item key={id} className="menuListItem">
                             {name}
                             <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
                                 <Button variant="link" size="sm" onClick={() => removeMenuItem(id)}> Del </Button>
                             </OverlayTrigger>
-                            <Button variant="link" size="sm" onClick={() => changeItemDescription(item)}> Change </Button>
-                        </li>
+                            <Button variant="link" size="sm" onClick={() => changeItemDescription(item)}> Cha </Button>
+                        </ListGroup.Item>
                     )
                 })
             }
+            </ListGroup>
         </div>
     )
 }

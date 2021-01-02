@@ -2,6 +2,7 @@ import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import Core from "./Core";
+import Users from "./Users";
 
 const Rudi = () => {
 
@@ -15,11 +16,12 @@ const Rudi = () => {
     }
 
     useEffect(() => {
-        if (rootName != '') document.title = rootName;
+        if (rootName !== '') document.title = rootName;
     }, [rootName]);
 
     useEffect(() => {
         window.addEventListener('resize', () => {setWindowSize(window.innerWidth)});
+        console.log('Window size is ' + windowSize)
         return () => {
             window.removeEventListener('resize', () => {setWindowSize(window.innerWidth)})
         }
@@ -41,8 +43,11 @@ const Rudi = () => {
                 <Col xl={{span: 3}}>
                     <Menu />
                 </Col>
-                <Col xl={{span: 9}}>
+                <Col xl={{span: 6}}>
                     <Core />
+                </Col>
+                <Col xl={{span: 3}}>
+                    <Users />
                 </Col>
             </Row>
 

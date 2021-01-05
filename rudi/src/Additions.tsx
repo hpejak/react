@@ -3,21 +3,23 @@ import {useState} from "react";
 
 const Additions = () => {
 
-    const [date, setDate] = useState<string>('');
-    const [amount, setAmount] = useState<number>(0);
+    const [giftInput, setGiftInput] = useState({date: '', amount: 0});
+
     const [entries, setEntries] = useState<any[]>([]);
+
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+        setGiftInput({...giftInput,[name]:value})
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (date && amount > 0) {
-            const entry: object = {date, amountValue: amount};
-            setEntries((entries) => {
-                return [...entries, entry];
-            });
-
-            setDate('');
-            setAmount(0);
+        if (giftInput.date && giftInput.amount > 0) {
+            setEntries([...entries,giftInput])
+            setGiftInput({date: '', amount: 0})
         } else {
             console.log("Please enter the fields in form");
         }
@@ -27,29 +29,30 @@ const Additions = () => {
     return (
         <div>
             <Form onSubmit={handleSubmit}>
+
                 <Form.Group as={Row} controlId="date">
                     <Form.Label column xl="3">Date : </Form.Label>
                     <Col xl="4">
-                        <Form.Control type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+                        <Form.Control type="date" name="date" value={giftInput.date} onChange={handleChange}/>
                     </Col>
                 </Form.Group>
+
                 <Form.Group as={Row} controlId="amount">
                     <Form.Label column xl="3">Amount: </Form.Label>
                     <Col xl="4">
-                        <Form.Control type="number" value={amount} onChange={(e) => {
-                            setAmount(e.target.value as any);
-                        }}/>
+                        <Form.Control type="number" name="amount" value={giftInput.amount} onChange={handleChange}/>
                     </Col>
                 </Form.Group>
+
                 <Button type="submit">Evaluate</Button>
             </Form>
 
             {entries.map((entry,index) =>{
-                const {date, amountValue} = entry;
+                const {date, amount} = entry;
                 return (
                   <div className="rowC entryDiv" key={index}>
                       <h5 className="col-xl-6">{date}</h5>
-                      <p className="col-xl-3">{amountValue}</p>
+                      <p className="col-xl-3">{amount}</p>
                   </div>
                 );
             })}

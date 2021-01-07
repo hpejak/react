@@ -46,3 +46,20 @@ code {
 .coreBtn {
   margin-right: 30px;
 }
+
+.middleCol {
+  padding-left: 10px;
+}
+
+.financeLabel {
+  display: grid;
+  justify-content: center;
+  color: gray;
+  font-weight: bold;
+}
+
+.financeModal {
+  color: red;
+  text-align: center;
+  border: 1px dotted black;
+}

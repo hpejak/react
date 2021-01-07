@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import Core from "./Core";
 import Budget from "./Budget";
 import Additions from "./Additions";
+import Finance from "./Finance";
 
 const Rudi = () => {
 
@@ -45,9 +46,12 @@ const Rudi = () => {
                 <Col xl={{span: 2}} className="menuCol">
                     <Menu />
                 </Col>
-                <Col xl={{span: 7}}>
-                    {rootName !== 'Rudi' && <Core />}
-                    <Additions />
+                <Col xl={{span: 7}} >
+                    <div className="middleCol">
+                        {rootName !== 'Rudi' && <Core />}
+                        {rootName !== 'Rudi' && <Additions />}
+                        {<Finance />}
+                    </div>
                 </Col>
                 <Col xl={{span: 3}}>
                     <Budget />

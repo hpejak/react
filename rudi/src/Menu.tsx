@@ -32,13 +32,12 @@ const Menu = () => {
         <div>
             <ListGroup>
             {
-
                 menuRootItems.map((item: any) => {
                     const {id, name, tooltip} = item;
 
                     return (
                         <ListGroup.Item key={id} className="menuListItem">
-                            {name}
+                            <Button variant="link" >{name}</Button>
                             <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
                                 <Button variant="link" size="sm" onClick={() => removeMenuItem(id)}> Del </Button>
                             </OverlayTrigger>

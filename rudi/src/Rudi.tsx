@@ -2,9 +2,9 @@ import Menu from './Menu'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
-import Budget from "./Budget";
+import Budget from "./components/Budget/Budget";
 import Additions from "./Additions";
-import Finance from "./Finance";
+import Finance from "./components/Finance/Finance";
 
 const menuItems = [
     {id: 1, name: "item1", tooltip: "First Item", description: "None for now"},

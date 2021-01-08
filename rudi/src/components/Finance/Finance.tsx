@@ -32,7 +32,7 @@ const Finance = () => {
         if(expense.expenseDescription && expense.expenseDate && expense.expenseAmount && expense.expenseCategory && expense.budgetCategory) {
             dispatch( {type: 'ADD_EXPENSE', payload: expense} );
             setExpense({expenseDescription:'', expenseDate: '',
-                expenseAmount: undefined, expenseCategory: '', budgetCategory: ''})
+                expenseAmount: 0, expenseCategory: '', budgetCategory: ''})
         } else {
             dispatch( {type: 'NO_FULL_DATA'} );
         }

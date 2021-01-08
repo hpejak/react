@@ -1,7 +1,10 @@
 import {Button, ListGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
+import {useContext} from "react";
+import {MenuContext} from "./Rudi";
 
-const Menu = ({menuRootItems, removeMenuItem, changeItemDescription}) => {
+const Menu = () => {
 
+    const {removeMenuItem,changeItemDescription, menuRootItems} = useContext(MenuContext);
 
     return (
         <div>

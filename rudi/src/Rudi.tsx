@@ -6,12 +6,34 @@ import Budget from "./Budget";
 import Additions from "./Additions";
 import Finance from "./Finance";
 
+const menuItems = [
+    {id: 1, name: "item1", tooltip: "First Item", description: "None for now"},
+    {id: 2, name: "item2", tooltip: "Second Item", description: "None for now"},
+    {id: 3, name: "item3", tooltip: "Third Item", description: "None for now"}
+];
+
+
 const Rudi = () => {
 
+    const [menuRootItems, setMenuRootItems] = useState(menuItems);
     const [ rootName, setRootName ] = useState('Rudi');
     const [ windowSize, setWindowSize ] = useState(window.innerWidth);
-
     let greeting = 'Hi, I am ' + rootName;
+
+    const removeMenuItem = (id) => {
+        setMenuRootItems(menuRootItems.filter((menuRootItem) => menuRootItem.id !== id));
+    }
+
+    const changeItemDescription = (item) => {
+
+        setMenuRootItems((startRootItems) => {
+
+            const replacementIndex: number = startRootItems.findIndex((menuRootItems) => menuRootItems.id === item.id);
+            const newMenuItem = {...item, description: 'Still no description'};
+
+            return [...startRootItems.slice(0, replacementIndex), newMenuItem, ...startRootItems.slice(replacementIndex + 1)]
+        })
+    }
 
     const onStart = () => {
         rootName === 'Start' ? setRootName('Rudi') : setRootName('Start')
@@ -44,7 +66,7 @@ const Rudi = () => {
             </Row>
             <Row>
                 <Col xl={{span: 2}} className="menuCol">
-                    <Menu />
+                    <Menu menuRootItems={menuRootItems} removeMenuItem={removeMenuItem} changeItemDescription={changeItemDescription} />
                 </Col>
                 <Col xl={{span: 7}} >
                     <div className="middleCol">

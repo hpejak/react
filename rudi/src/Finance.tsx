@@ -1,18 +1,9 @@
 import React, {useReducer, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import FinanceModal from "./FinanceModal";
+import financeReducer from "./FinanceReducer";
 
-const reducer = (state, action) => {
 
-    if (action.type === 'ADD_EXPENSE') {
-        const newData = [...state.expenseList, action.payload]
-        return {...state, showModal:true, modalContent: 'Insert Done', expenseList: newData};
-    } else if (action.type === 'NO_FULL_DATA') {
-        return {...state, showModal:true, modalContent: 'You forget to insert something'};
-    }
-
-    throw new Error('Reducer Failed');
-};
 
 const defaultExpense: object = {
     expenseList: [],
@@ -33,7 +24,7 @@ const Finance = () => {
     const [expense, setExpense] = useState<Expense>({expenseDescription:'', expenseDate: '',
         expenseAmount: undefined, expenseCategory: '', budgetCategory: ''})
 
-    const [state, dispatch] = useReducer(reducer, defaultExpense)
+    const [state, dispatch] = useReducer(financeReducer, defaultExpense)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -55,6 +46,10 @@ const Finance = () => {
             ...prevState, [name]: value
         }))
 
+    }
+
+    const closeModal = () => {
+        dispatch({type: 'CLOSE_MODAL'})
     }
 
     return (
@@ -110,7 +105,7 @@ const Finance = () => {
                 </Row>
 
             </Form>
-            {state.showModal && <FinanceModal modalContent={state.modalContent} />}
+            {state.showModal && <FinanceModal closeModal={closeModal} modalContent={state.modalContent} />}
         </div>
 
     )

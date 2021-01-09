@@ -38,6 +38,16 @@ code {
   padding-left: 0 !important;
 }
 
+.budgetCategory {
+  font-size: small;
+  font-weight: bold;
+  color: #282c34;
+}
+
+.budgetAmount {
+  font-size: x-small;
+}
+
 .core {
   width: 512px;
   margin-bottom: 50px;

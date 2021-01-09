@@ -15,7 +15,7 @@ const Menu = () => {
 
                         return (
                             <ListGroup.Item key={id} className="menuListItem">
-                                <Button variant="link">{name}</Button>
+                                <Button size="sm" variant="link">{name}</Button>
                                 <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
                                     <Button variant="link" size="sm" onClick={() => removeMenuItem(id)}>D</Button>
                                 </OverlayTrigger>

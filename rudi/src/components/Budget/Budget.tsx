@@ -1,5 +1,6 @@
 import {ListGroup} from "react-bootstrap";
 import useFetch from "../../hooks/useFetch";
+import BudgetItem from "./BudgetItem";
 
 const api = 'https://pejaklab.ddns.net/Financije/Getters/getBudgetView.php'
 
@@ -13,8 +14,7 @@ const Budget = () => {
         <>
             <ListGroup>
                 {Object.entries(dataGrid).map(([key,budget]) => {
-                    const {Name} = budget;
-                    return <ListGroup.Item key={key}>{Name}</ListGroup.Item>
+                    return (<BudgetItem key={key} {...budget}/>)
                 })}
             </ListGroup>
         </>

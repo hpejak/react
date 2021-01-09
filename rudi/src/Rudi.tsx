@@ -70,14 +70,14 @@ const Rudi = () => {
                     <Col xl={{span: 2}} className="menuCol">
                         <Menu />
                     </Col>
-                    <Col xl={{span: 7}}>
+                    <Col xl={{span: 8}}>
                         <div className="middleCol">
                             {rootName !== 'Rudi' && <Core/>}
                             {rootName !== 'Rudi' && <Additions/>}
                             {<Finance/>}
                         </div>
                     </Col>
-                    <Col xl={{span: 3}}>
+                    <Col xl={{span: 2}}>
                         <Budget/>
                     </Col>
                 </Row>

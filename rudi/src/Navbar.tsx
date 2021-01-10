@@ -1,10 +1,10 @@
-import {Button, Nav, OverlayTrigger, Tooltip} from "react-bootstrap";
+import {Nav,OverlayTrigger,Tooltip} from "react-bootstrap";
 import {useContext} from "react";
 import {MenuContext} from "./Rudi";
 
 const Navbar = () => {
 
-    const {removeMenuItem, changeItemDescription, menuRootItems} = useContext(MenuContext);
+    const {menuRootItems} = useContext(MenuContext);
 
     return (
         <div>
@@ -16,20 +16,15 @@ const Navbar = () => {
                         return (
                             <Nav.Item>
                                 <Nav.Link key={id} className="menuListItem" href={name}>
-                                    <Button size="sm" variant="link">{name}</Button>
                                     <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
-                                        <Button variant="link" size="sm" onClick={() => removeMenuItem(id)}>D</Button>
+                                        <div>{name}</div>
                                     </OverlayTrigger>
-                                    <Button variant="link" size="sm"
-                                            onClick={() => changeItemDescription(item)}>C</Button>
                                 </Nav.Link>
                             </Nav.Item>
                         )
                     })
                 }
-                {/*<NavDropdown id="dropdownDemo" title="demo">*/}
-                {/*    <NavDropdown.Item eventKey="4.1">Test</NavDropdown.Item>*/}
-                {/*</NavDropdown>*/}
+
             </Nav>
         </div>
     )

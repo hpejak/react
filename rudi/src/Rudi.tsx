@@ -7,6 +7,7 @@ import Additions from "./Additions";
 import Finance from "./components/Finance/Finance";
 import Error from "./components/Error/"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import BudgetDetail from "./components/Budget/BudgetDetail";
 
 
 const menuItems = [
@@ -20,8 +21,8 @@ export const MenuContext = React.createContext<any | null>(null);
 const Rudi = () => {
 
     const [menuRootItems, setMenuRootItems] = useState(menuItems);
-    const [ rootName, setRootName ] = useState('Rudi');
-    const [ windowSize, setWindowSize ] = useState(window.innerWidth);
+    const [rootName, setRootName] = useState('Rudi');
+    const [windowSize, setWindowSize] = useState(window.innerWidth);
     let greeting = 'Hi, I am ' + rootName;
 
     const removeMenuItem = (id) => {
@@ -48,34 +49,38 @@ const Rudi = () => {
     }, [rootName]);
 
     useEffect(() => {
-        window.addEventListener('resize', () => {setWindowSize(window.innerWidth)});
+        window.addEventListener('resize', () => {
+            setWindowSize(window.innerWidth)
+        });
         console.log('Window size is ' + windowSize)
 
         return () => {
-            window.removeEventListener('resize', () => {setWindowSize(window.innerWidth)})
+            window.removeEventListener('resize', () => {
+                setWindowSize(window.innerWidth)
+            })
         }
     })
 
     return (
         <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}}>
-            <Container fluid="xl">
-                <Row className="titleRow">
-                    <Col xl={{span: 3, offset: 3}}>
-                        <h1>
-                            {greeting}
-                        </h1>
-                    </Col>
-                    <Col className="titleCol">
-                        <Button className="titleBtn" onClick={onStart}>Let's Start</Button>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xl={{span: 2}} className="menuCol">
-                        <Navbar/>
-                    </Col>
-                    <Col xl={{span: 8}}>
-                        <div className="middleCol">
-                            <Router>
+            <Router>
+                <Container fluid="xl">
+                    <Row className="titleRow">
+                        <Col xl={{span: 3, offset: 3}}>
+                            <h1>
+                                {greeting}
+                            </h1>
+                        </Col>
+                        <Col className="titleCol">
+                            <Button className="titleBtn" onClick={onStart}>Let's Start</Button>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xl={{span: 2}} className="menuCol">
+                            <Navbar/>
+                        </Col>
+                        <Col xl={{span: 8}}>
+                            <div className="middleCol">
                                 <Switch>
                                     <Route exact path='/'>
 
@@ -89,18 +94,19 @@ const Rudi = () => {
                                     <Route path='/finance'>
                                         <Finance/>
                                     </Route>
+                                    <Route path="/:name" children={<BudgetDetail />} />
                                     <Route path='*'>
                                         <Error/>
                                     </Route>
                                 </Switch>
-                            </Router>
-                        </div>
-                    </Col>
-                    <Col xl={{span: 2}}>
-                        <Budget/>
-                    </Col>
-                </Row>
-            </Container>
+                            </div>
+                        </Col>
+                        <Col xl={{span: 2}}>
+                            <Budget/>
+                        </Col>
+                    </Row>
+                </Container>
+            </Router>
         </MenuContext.Provider>
     )
 }

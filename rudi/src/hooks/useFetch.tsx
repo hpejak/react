@@ -4,8 +4,6 @@ const useFetch = (url) => {
     const [dataGrid, setDataGrid] = useState([])
     const [isError, setIsError] = useState(false)
 
-
-
     useEffect(() => {
         const getData = () => {
             fetch(url)

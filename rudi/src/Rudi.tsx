@@ -5,6 +5,7 @@ import Core from "./Core";
 import Budget from "./components/Budget/Budget";
 import Additions from "./Additions";
 import Finance from "./components/Finance/Finance";
+import Error from "./components/Error/"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 
@@ -70,20 +71,28 @@ const Rudi = () => {
                 </Row>
                 <Row>
                     <Col xl={{span: 2}} className="menuCol">
-                        <Navbar />
+                        <Navbar/>
                     </Col>
                     <Col xl={{span: 8}}>
                         <div className="middleCol">
                             <Router>
-                                <Route path='/core'>
-                                    <Core/>
-                                </Route>
-                                <Route path='/additions'>
-                                    <Additions/>
-                                </Route>
-                                <Route path='/finance'>
-                                    <Finance/>
-                                </Route>
+                                <Switch>
+                                    <Route exact path='/'>
+
+                                    </Route>
+                                    <Route path='/core'>
+                                        <Core/>
+                                    </Route>
+                                    <Route path='/additions'>
+                                        <Additions/>
+                                    </Route>
+                                    <Route path='/finance'>
+                                        <Finance/>
+                                    </Route>
+                                    <Route path='*'>
+                                        <Error/>
+                                    </Route>
+                                </Switch>
                             </Router>
                         </div>
                     </Col>

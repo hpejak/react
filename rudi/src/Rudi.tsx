@@ -1,15 +1,17 @@
-import Menu from './Menu'
+import Navbar from './Navbar'
 import {Button, Col, Container, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
 import Budget from "./components/Budget/Budget";
 import Additions from "./Additions";
 import Finance from "./components/Finance/Finance";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+
 
 const menuItems = [
-    {id: 1, name: "item1", tooltip: "First Item", description: "None for now"},
-    {id: 2, name: "item2", tooltip: "Second Item", description: "None for now"},
-    {id: 3, name: "item3", tooltip: "Third Item", description: "None for now"}
+    {id: 1, name: "Core", tooltip: "First Item", description: "None for now"},
+    {id: 2, name: "Additions", tooltip: "Second Item", description: "None for now"},
+    {id: 3, name: "Finance", tooltip: "Third Item", description: "None for now"}
 ];
 
 export const MenuContext = React.createContext<any | null>(null);
@@ -68,13 +70,21 @@ const Rudi = () => {
                 </Row>
                 <Row>
                     <Col xl={{span: 2}} className="menuCol">
-                        <Menu />
+                        <Navbar />
                     </Col>
                     <Col xl={{span: 8}}>
                         <div className="middleCol">
-                            {rootName !== 'Rudi' && <Core/>}
-                            {rootName !== 'Rudi' && <Additions/>}
-                            {<Finance/>}
+                            <Router>
+                                <Route path='/core'>
+                                    <Core/>
+                                </Route>
+                                <Route path='/additions'>
+                                    <Additions/>
+                                </Route>
+                                <Route path='/finance'>
+                                    <Finance/>
+                                </Route>
+                            </Router>
                         </div>
                     </Col>
                     <Col xl={{span: 2}}>

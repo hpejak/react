@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
 import Budget from "./components/Budget/Budget";
@@ -64,9 +64,9 @@ const Rudi = () => {
     return (
         <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}}>
             <Router>
-                <Container fluid="xl">
+                <div className="wrapper">
                     <Row className="titleRow">
-                        <Col xl={{span: 3, offset: 3}}>
+                        <Col xl={{span: 6, offset: 4}}>
                             <h1>
                                 {greeting}
                             </h1>
@@ -76,10 +76,10 @@ const Rudi = () => {
                         </Col>
                     </Row>
                     <Row>
-                        <Col xl={{span: 2}} className="menuCol">
+                        <Col xl={{span: 1}} className="menuCol">
                             <Navbar/>
                         </Col>
-                        <Col xl={{span: 8}}>
+                        <Col xl={{span: 9}}>
                             <div className="middleCol">
                                 <Switch>
                                     <Route exact path='/'>
@@ -105,7 +105,7 @@ const Rudi = () => {
                             <Budget/>
                         </Col>
                     </Row>
-                </Container>
+                </div>
             </Router>
         </MenuContext.Provider>
     )

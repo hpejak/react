@@ -12,6 +12,38 @@ code {
     monospace;
 }
 
+.wrapper {
+  align-content: center;
+  height: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .wrapper {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .wrapper {
+    width: 1890px;
+  }
+}
 
 .rowC {
   display: flex;

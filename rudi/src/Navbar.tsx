@@ -14,8 +14,8 @@ const Navbar = () => {
                         const {id, name, tooltip} = item;
 
                         return (
-                            <Nav.Item>
-                                <Nav.Link key={id} className="menuListItem" href={name}>
+                            <Nav.Item key={id}>
+                                <Nav.Link className="menuListItem" href={name}>
                                     <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
                                         <div>{name}</div>
                                     </OverlayTrigger>

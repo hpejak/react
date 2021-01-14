@@ -8,12 +8,15 @@ import Finance from "./components/Finance/Finance";
 import Error from "./components/Error/"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import BudgetDetail from "./components/Budget/BudgetDetail";
-
+import Water from "./components/Water/"
+import File from "./components/File";
 
 const menuItems = [
     {id: 1, name: "Core", tooltip: "First Item", description: "None for now"},
     {id: 2, name: "Additions", tooltip: "Second Item", description: "None for now"},
-    {id: 3, name: "Finance", tooltip: "Third Item", description: "None for now"}
+    {id: 3, name: "Finance", tooltip: "Third Item", description: "None for now"},
+    {id: 4, name: "Water", tooltip: "Forth Item", description: "None for now"},
+    {id: 5, name: "FileReader", tooltip: "Fifth Item", description: "None for now"}
 ];
 
 export const MenuContext = React.createContext<any | null>(null);
@@ -93,6 +96,12 @@ const Rudi = () => {
                                     </Route>
                                     <Route path='/finance'>
                                         <Finance/>
+                                    </Route>
+                                    <Route path='/water'>
+                                        <Water/>
+                                    </Route>
+                                    <Route path='/fileReader'>
+                                        <File/>
                                     </Route>
                                     <Route path="/:name" children={<BudgetDetail />} />
                                     <Route path='*'>

@@ -1,5 +1,13 @@
 import {Component} from "react";
-import {Button, Form, Row} from "react-bootstrap";
+import {Button,  Row} from "react-bootstrap";
+import ConsumptionInput from "./ConsumptionInput";
+
+const participant = [
+    {id:1, name: 'consumptionSum', description: 'Consumption sum'},
+    {id:2, name: 'consumptionSecondFlore', description: 'Pejak'},
+    {id:3, name: 'consumptionFirsFlore', description: 'Teodorović'},
+    {id:4, name: 'consumptionLittleHouse', description: 'Little House'}
+    ]
 
 class Water extends Component{
 
@@ -33,58 +41,23 @@ class Water extends Component{
     }
 
     consumptionChangeHandler = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
 
         this.setState({
-            consumptionSum: e.target.value
+            [name]: value
         })
     }
 
-    consumptionFirstFloreChangeHandler = (e) => {
-
-        this.setState({
-            consumptionFirsFlore: e.target.value
-        })
-    }
-
-    consumptionSecondFloreChangeHandler = (e) => {
-
-        this.setState({
-            consumptionSecondFlore: e.target.value
-        })
-    }
-
-    consumptionLittleHouseChangeHandler = (e) => {
-
-        this.setState({
-            consumptionLittleHouse: e.target.value
-        })
-    }
 
     render() {
         return (
             <>
-
                 <Row>
-                    <Form.Group>
-                        <Form.Label>Consumption sum m<sup>3</sup></Form.Label>
-                        <Form.Control type="number" value={this.state.consumptionSum} onChange={this.consumptionChangeHandler}/>
-                    </Form.Group>
-
-                    <Form.Group>
-                        <Form.Label>Pejak m<sup>3</sup></Form.Label>
-                        <Form.Control type="number" value={this.state.consumptionSecondFlore} onChange={this.consumptionSecondFloreChangeHandler}/>
-                    </Form.Group>
-
-                    <Form.Group>
-                        <Form.Label>Teodorović m<sup>3</sup></Form.Label>
-                        <Form.Control type="number" value={this.state.consumptionFirsFlore} onChange={this.consumptionFirstFloreChangeHandler}/>
-                    </Form.Group>
-
-                    <Form.Group>
-                        <Form.Label>Little House m<sup>3</sup></Form.Label>
-                        <Form.Control type="number" value={this.state.consumptionLittleHouse} onChange={this.consumptionLittleHouseChangeHandler}/>
-                    </Form.Group>
-
+                    <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>
+                    <ConsumptionInput entry={participant[1]} consumptionSum={this.state.consumptionSecondFlore} editFieldFunction={this.consumptionChangeHandler}/>
+                    <ConsumptionInput entry={participant[2]} consumptionSum={this.state.consumptionFirsFlore} editFieldFunction={this.consumptionChangeHandler}/>
+                    <ConsumptionInput entry={participant[3]} consumptionSum={this.state.consumptionLittleHouse} editFieldFunction={this.consumptionChangeHandler}/>
                 </Row>
 
                 <Row>

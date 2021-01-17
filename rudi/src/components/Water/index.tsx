@@ -51,9 +51,13 @@ class Water extends Component{
 
 
     render() {
+        const style = {
+            cursor: 'pointer'
+        }
+
         return (
             <>
-                <Row>
+                <Row style={style}>
                     <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>
                     <ConsumptionInput entry={participant[1]} consumptionSum={this.state.consumptionSecondFlore} editFieldFunction={this.consumptionChangeHandler}/>
                     <ConsumptionInput entry={participant[2]} consumptionSum={this.state.consumptionFirsFlore} editFieldFunction={this.consumptionChangeHandler}/>

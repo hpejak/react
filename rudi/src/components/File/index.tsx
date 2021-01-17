@@ -9,7 +9,7 @@ const File = () => {
     const [fileName, setFileName] = useState('Choose File')
 
 
-    const handleReadFile = (e) => {
+    const handleReadFile = () => {
         const content = fileReader.result;
         const linesOfFile = content.split('\n');
         setFileEntry(linesOfFile);
@@ -17,6 +17,7 @@ const File = () => {
 
     const handleFile = (file) => {
         const files = file.target.files;
+
         if (files.length > 0) {
             fileReader = new FileReader();
             fileReader.onloadend = handleReadFile;
@@ -40,9 +41,9 @@ const File = () => {
 
             <Form.Group>
                 <Form.Label>Names</Form.Label>
-                {fileEntry.map((entry:string) => {
+                {fileEntry.map((entry:string, index: number) => {
                     return (
-                        <FileEntry entry={entry}/>
+                        <FileEntry entry={entry} key={index}/>
                     );
                 })}
             </Form.Group>

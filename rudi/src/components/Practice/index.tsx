@@ -1,7 +1,7 @@
 import UserInput from "./UserInput";
 import UserOutput from "./UserOutput";
 import {Col, Row} from "react-bootstrap";
-import {useState} from "react";
+import React, {useState} from "react";
 
 const Practise = () => {
 

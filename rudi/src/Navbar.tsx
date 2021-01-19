@@ -1,12 +1,12 @@
-import {Nav, Overlay, Tooltip} from "react-bootstrap";
-import {useContext, useRef, useState} from "react";
+import {Nav, Tooltip, OverlayTrigger} from "react-bootstrap";
+import {useContext, useState} from "react";
 import {MenuContext} from "./Rudi";
 
 const Navbar = () => {
 
     const {menuRootItems} = useContext(MenuContext);
     const [show, setShow] = useState(false);
-    const target=useRef(null);
+    // const target=useRef(null);
 
     return (
         <div>
@@ -18,16 +18,20 @@ const Navbar = () => {
                         return (
                             <div key={id}>
                                 <Nav.Item >
-                                    <Nav.Link className="menuListItem" href={name} ref={target} onMouseEnter={()=>setShow(!show)}>
-                                        {/*<OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>*/}
+                                    <Nav.Link
+                                        className="menuListItem"
+                                        href={name}
+                                        // ref={target}
+                                        onMouseEnter={()=>setShow(!show)}>
+                                        <OverlayTrigger placement="top" overlay={<Tooltip id={id}>{tooltip}</Tooltip>}>
                                             <div>{name}</div>
-                                        {/*</OverlayTrigger>*/}
+                                        </OverlayTrigger>
                                     </Nav.Link>
                                 </Nav.Item>
 
-                                <Overlay target={target.current} show={show}>
-                                    <Tooltip id={id}>{tooltip}</Tooltip>
-                                </Overlay>
+                                {/*<Overlay target={target.current} show={show}>*/}
+                                {/*    <Tooltip id={id}>{tooltip}</Tooltip>*/}
+                                {/*</Overlay>*/}
                             </div>
                         )
                     })

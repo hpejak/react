@@ -53,7 +53,7 @@ const Finance = () => {
     }
 
     return (
-        <div>
+        <div className="col-xl-12 col-lg-12 col-md-12">
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col xl={10}>

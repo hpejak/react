@@ -5,10 +5,10 @@ const Practise = () => {
 
 
     return (
-        <>
+        <div className="col-xl-12 col-lg-12 col-md-12">
             <FirstAssignment />
             <SecondAssignment />
-        </>
+        </div>
     )
 
 }

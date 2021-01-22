@@ -27,7 +27,7 @@ const Additions = () => {
 
 
     return (
-        <div>
+        <div className="col-xl-12 col-lg-12 col-md-12">
             <Form onSubmit={handleSubmit}>
 
                 <Form.Group as={Row} controlId="date">

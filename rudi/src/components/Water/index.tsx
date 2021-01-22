@@ -56,7 +56,7 @@ class Water extends Component{
         }
 
         return (
-            <>
+            <div className="col-xl-12 col-lg-12 col-md-12">
                 <Row style={style}>
                     <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>
                     <ConsumptionInput entry={participant[1]} consumptionSum={this.state.consumptionSecondFlore} editFieldFunction={this.consumptionChangeHandler}/>
@@ -79,8 +79,7 @@ class Water extends Component{
                     <h6>Teodorović Price for water consumption is {this.state.firstFlorePrice} kn</h6>
                 </Row>
 
-
-            </>
+            </div>
         )
     }
 

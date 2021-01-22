@@ -1,5 +1,5 @@
 import Navbar from './Navbar'
-import {Button, Col, Row} from "react-bootstrap";
+import { Col, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
 import Budget from "./components/Budget/Budget";
@@ -11,14 +11,16 @@ import BudgetDetail from "./components/Budget/BudgetDetail";
 import Water from "./components/Water/";
 import File from "./components/File";
 import Practise from "./components/Practice";
+import Header from "./components/Header";
 
 const menuItems = [
-    {id: 1, name: "Core", tooltip: "First Item", description: "None for now"},
-    {id: 2, name: "Additions", tooltip: "Second Item", description: "None for now"},
-    {id: 3, name: "Finance", tooltip: "Third Item", description: "None for now"},
-    {id: 4, name: "Water", tooltip: "Forth Item", description: "None for now"},
-    {id: 5, name: "FileReader", tooltip: "Fifth Item", description: "None for now"},
-    {id: 6, name: "Practise", tooltip: "Sixth Item", description: "None for now"}
+    {id: 0, name: "Home", link: "/", tooltip: "Start", description: "None for now"},
+    {id: 1, name: "Core", link: "core", tooltip: "First Item", description: "None for now"},
+    {id: 2, name: "Additions", link: "additions", tooltip: "Second Item", description: "None for now"},
+    {id: 3, name: "Finance", link: "finance", tooltip: "Third Item", description: "None for now"},
+    {id: 4, name: "Water", link: "water", tooltip: "Forth Item", description: "None for now"},
+    {id: 5, name: "FileReader", link: "fileReader", tooltip: "Fifth Item", description: "None for now"},
+    {id: 6, name: "Practise", link: "practise", tooltip: "Sixth Item", description: "None for now"}
 ];
 
 export const MenuContext = React.createContext<any | null>(null);
@@ -28,7 +30,6 @@ const Rudi = () => {
     const [menuRootItems, setMenuRootItems] = useState(menuItems);
     const [rootName, setRootName] = useState('Rudi');
     const [windowSize, setWindowSize] = useState(window.innerWidth);
-    let greeting = 'Hi, I am ' + rootName;
 
     const removeMenuItem = (id) => {
         setMenuRootItems(menuRootItems.filter((menuRootItem) => menuRootItem.id !== id));
@@ -66,25 +67,21 @@ const Rudi = () => {
         }
     })
 
+    const style =  {
+        backgroundColor: '#b2ad7f',
+        borderRadius: '15px',
+    }
+
     return (
-        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}}>
+        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}} >
             <Router>
-                <div className="wrapper">
-                    <Row className="titleRow">
-                        <Col xl={{span: 6, offset: 4}}>
-                            <h1>
-                                {greeting}
-                            </h1>
-                        </Col>
-                        <Col className="titleCol">
-                            <Button className="titleBtn" onClick={onStart}>Let's Start</Button>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col xl={{span: 1}} className="menuCol">
+                <div className="wrapper" style={style}>
+                    <Header rootName={rootName} onStart={onStart}/>
+                    <Row >
+                        <Col xl={{span: 1}} lg={{span: 1}} md={{span: 1}} className="menuCol">
                             <Navbar/>
                         </Col>
-                        <Col xl={{span: 9}}>
+                        <Col xl={{span: 9}} lg={{span: 9}} md={{span: 9}}>
                             <div className="middleCol">
                                 <Switch>
                                     <Route exact path='/'>
@@ -115,7 +112,7 @@ const Rudi = () => {
                                 </Switch>
                             </div>
                         </Col>
-                        <Col xl={{span: 2}}>
+                        <Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}}>
                             <Budget/>
                         </Col>
                     </Row>

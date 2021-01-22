@@ -29,7 +29,7 @@ const File = () => {
     }
 
     return (
-        <div >
+        <div className="col-xl-12 col-lg-12 col-md-12">
             <Row>
                 <Col xl={{span: 3}}>
                     <Form.Group as={Row}>

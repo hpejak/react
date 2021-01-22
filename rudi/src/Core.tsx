@@ -14,7 +14,7 @@ const Core = () => {
     }
 
     return (
-        <div className="core col-xl-12" >
+        <div className="core col-xl-12 col-lg-12 col-md-12" >
             <h4>Play with useState and numbers</h4>
 
             <h1>{numberValue}</h1>

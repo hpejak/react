@@ -5,11 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #DEEAEE;
 }
 
 .rudi {
-  background-color: #DEEAEE;
+  background-color: #fff5f0;
 }
 
 code {
@@ -40,13 +39,13 @@ code {
 
 @media (min-width: 1200px) {
   .wrapper {
-    width: 1170px;
+    width: 1100px;
   }
 }
 
 @media (min-width: 1920px) {
   .wrapper {
-    width: 1890px;
+    width: 1800px;
   }
 }
 
@@ -63,8 +62,18 @@ code {
   margin-bottom: 30px;
 }
 
+.titleCol {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  alignment: center;
+  line-height: 80px;
+  height: 80px;
+}
+
 .titleBtn {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
+  /*padding: 2px !important;*/
 }
 
 .menuListItem {

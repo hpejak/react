@@ -1,25 +1,26 @@
-import {Nav} from "react-bootstrap";
-import {useContext, useState} from "react";
+import {Navbar, Nav} from "react-bootstrap";
+import {useContext} from "react";
 import {MenuContext} from "./Rudi";
 
-const Navbar = () => {
+const NavMenu = () => {
 
-    const {menuRootItems} = useContext(MenuContext);
-    const [activeNav, setActiveNav] = useState('core')
+    const {menuRootItems, activeNav} = useContext(MenuContext);
 
-    const handleNavClick =(e) => {
-        console.log(e.target.value)
-        setActiveNav(e.target.value);
-    }
-
-    console.log(activeNav)
+    // console.log(activeNav)
+    //
+    // const handleActiveNav = (e) => {
+    //     setActiveNav(e)
+    // }
 
     return (
         <div>
-            <Nav
+            <Navbar
+
                 className="flex-column"
-                variant="pills"
-                activeKey={activeNav}>
+                variant="dark"
+                // activeKey={activeNav}
+                // onSelect={handleActiveNav}
+            >
                 {
                     menuRootItems.map((item: any) => {
                         const {id, name, link} = item;
@@ -29,7 +30,8 @@ const Navbar = () => {
                                 <Nav.Link
                                     className="menuListItem"
                                     href={link}
-                                    onClick={() => handleNavClick}>
+                                    eventKey={link}
+                                    >
                                         {name}
                                 </Nav.Link>
                             </Nav.Item>
@@ -37,10 +39,10 @@ const Navbar = () => {
                     })
                 }
 
-            </Nav>
+            </Navbar>
         </div>
     )
 }
 
 
-export default Navbar;
+export default NavMenu;

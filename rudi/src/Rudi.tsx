@@ -1,4 +1,4 @@
-import Navbar from './Navbar'
+import NavMenu from './NavMenu'
 import { Col, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
@@ -15,7 +15,7 @@ import Header from "./components/Header";
 
 const menuItems = [
     {id: 0, name: "Home", link: "/", tooltip: "Start", description: "None for now"},
-    {id: 1, name: "Core", link: "core", tooltip: "First Item", description: "None for now"},
+    {id: 1, name: "Core", link: "Core", tooltip: "First Item", description: "None for now"},
     {id: 2, name: "Additions", link: "additions", tooltip: "Second Item", description: "None for now"},
     {id: 3, name: "Finance", link: "finance", tooltip: "Third Item", description: "None for now"},
     {id: 4, name: "Water", link: "water", tooltip: "Forth Item", description: "None for now"},
@@ -30,6 +30,9 @@ const Rudi = () => {
     const [menuRootItems, setMenuRootItems] = useState(menuItems);
     const [rootName, setRootName] = useState('Rudi');
     const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+    // TODO Check what is with NavBar coloring, this useState is just for that purpose
+    const [activeNav, setActiveNav] = useState('/')
 
     const removeMenuItem = (id) => {
         setMenuRootItems(menuRootItems.filter((menuRootItem) => menuRootItem.id !== id));
@@ -68,20 +71,20 @@ const Rudi = () => {
     })
 
     const style =  {
-        backgroundColor: '#b2ad7f',
+        backgroundColor: 'rgba(217, 217, 219, 0.5)',
         borderRadius: '15px',
     }
 
     return (
-        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}} >
+        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems, activeNav, setActiveNav}} >
             <Router>
                 <div className="wrapper" style={style}>
                     <Header rootName={rootName} onStart={onStart}/>
                     <Row >
-                        <Col xl={{span: 1}} lg={{span: 1}} md={{span: 1}} className="menuCol">
-                            <Navbar/>
+                        <Col xl={{span: 1}} lg={{span: 1}} md={{span: 1}} className="menuCol" id="menu">
+                            <NavMenu/>
                         </Col>
-                        <Col xl={{span: 9}} lg={{span: 9}} md={{span: 9}}>
+                        <Col xl={{span: 9}} lg={{span: 9}} md={{span: 9}} id="page">
                             <div className="middleCol">
                                 <Switch>
                                     <Route exact path='/'>
@@ -97,7 +100,7 @@ const Rudi = () => {
                                         <Finance/>
                                     </Route>
                                     <Route path='/water'>
-                                        <Water/>
+                                        <Water />
                                     </Route>
                                     <Route path='/fileReader'>
                                         <File/>
@@ -112,7 +115,7 @@ const Rudi = () => {
                                 </Switch>
                             </div>
                         </Col>
-                        <Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}}>
+                        <Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}} id="additionalMenu">
                             <Budget/>
                         </Col>
                     </Row>

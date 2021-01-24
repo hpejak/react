@@ -15,13 +15,16 @@ import Header from "./components/Header";
 
 const menuItems = [
     {id: 0, name: "Home", link: "/", tooltip: "Start", description: "None for now"},
-    {id: 1, name: "Core", link: "Core", tooltip: "First Item", description: "None for now"},
-    {id: 2, name: "Additions", link: "additions", tooltip: "Second Item", description: "None for now"},
-    {id: 3, name: "Finance", link: "finance", tooltip: "Third Item", description: "None for now"},
-    {id: 4, name: "Water", link: "water", tooltip: "Forth Item", description: "None for now"},
-    {id: 5, name: "FileReader", link: "fileReader", tooltip: "Fifth Item", description: "None for now"},
-    {id: 6, name: "Practise", link: "practise", tooltip: "Sixth Item", description: "None for now"}
+    {id: 1, name: "Finance", link: "finance", tooltip: "Third Item", description: "None for now"},
+    {id: 2, name: "Water", link: "water", tooltip: "Forth Item", description: "None for now"},
+    {id: 3, name: "FileReader", link: "fileReader", tooltip: "Fifth Item", description: "None for now"},
 ];
+
+const dropdownMenuItems = [
+    {id: 0, name: "Core", link: "core", tooltip: "First Item", description: "None for now"},
+    {id: 1, name: "Additions", link: "additions", tooltip: "Second Item", description: "None for now"},
+    {id: 2, name: "Practise", link: "practise", tooltip: "Sixth Item", description: "None for now"}
+]
 
 export const MenuContext = React.createContext<any | null>(null);
 
@@ -73,7 +76,7 @@ const Rudi = () => {
     }
 
     return (
-        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}} >
+        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems, dropdownMenuItems}} >
             <Router>
                 <div className="wrapper" style={style}>
                     <Header rootName={rootName} onStart={onStart}/>

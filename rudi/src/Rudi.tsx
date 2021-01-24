@@ -31,9 +31,6 @@ const Rudi = () => {
     const [rootName, setRootName] = useState('Rudi');
     const [windowSize, setWindowSize] = useState(window.innerWidth);
 
-    // TODO Check what is with NavBar coloring, this useState is just for that purpose
-    const [activeNav, setActiveNav] = useState('/')
-
     const removeMenuItem = (id) => {
         setMenuRootItems(menuRootItems.filter((menuRootItem) => menuRootItem.id !== id));
     }
@@ -76,7 +73,7 @@ const Rudi = () => {
     }
 
     return (
-        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems, activeNav, setActiveNav}} >
+        <MenuContext.Provider value={{removeMenuItem, changeItemDescription, menuRootItems}} >
             <Router>
                 <div className="wrapper" style={style}>
                     <Header rootName={rootName} onStart={onStart}/>
@@ -108,7 +105,7 @@ const Rudi = () => {
                                     <Route path='/practise'>
                                         <Practise/>
                                     </Route>
-                                    <Route path="/:name" children={<BudgetDetail />} />
+                                    <Route path='/:name' children={<BudgetDetail />} />
                                     <Route path='*'>
                                         <Error/>
                                     </Route>

@@ -1,16 +1,15 @@
 import {Nav} from "react-bootstrap";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {MenuContext} from "./Rudi";
+import {Link} from "react-router-dom";
 
 const NavMenu = () => {
 
-    const {menuRootItems, activeNav} = useContext(MenuContext);
+    const {menuRootItems} = useContext(MenuContext);
 
-    // console.log(activeNav)
-    //
-    // const handleActiveNav = (e) => {
-    //     setActiveNav(e)
-    // }
+    const [activeNav, setActiveNav] = useState('/')
+
+    const handleClick = (eventKey: any) => setActiveNav(eventKey);
 
     return (
         <div>
@@ -18,7 +17,7 @@ const NavMenu = () => {
                 className="flex-column"
                 variant="pills"
                 activeKey={activeNav}
-                // onSelect={handleActiveNav}
+                onSelect={handleClick}
             >
                 {
                     menuRootItems.map((item: any) => {
@@ -30,6 +29,8 @@ const NavMenu = () => {
                                     className="menuListItem"
                                     href={link}
                                     eventKey={link}
+                                    as={Link}
+                                    to={link}
                                     >
                                         {name}
                                 </Nav.Link>

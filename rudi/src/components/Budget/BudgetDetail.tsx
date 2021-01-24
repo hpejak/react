@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch";
 const api = 'https://pejaklab.ddns.net/Financije/Getters/getBudgetView.php'
 
 const BudgetDetail = React.memo(() => {
-    const {name} = useParams();
+    const {name} = useParams<{name: string}>();
     const [amount, setAmount] = useState<number| undefined>(undefined);
     const {dataGrid} = useFetch(api);
 

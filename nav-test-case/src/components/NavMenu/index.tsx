@@ -1,5 +1,6 @@
 import {useState} from "react";
 import {Nav} from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const NavMenu = (props: any) => {
     const {navItems} = props;
@@ -25,7 +26,10 @@ const NavMenu = (props: any) => {
                     return (
                         <Nav.Item key={id}>
                             <Nav.Link href={link}
-                                      eventKey={link}>
+                                      eventKey={link}
+                                      as={Link}
+                                      to={link}
+                            >
                                 {name}
                             </Nav.Link>
                         </Nav.Item>

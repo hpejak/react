@@ -1,4 +1,4 @@
-import {Navbar, Nav} from "react-bootstrap";
+import {Nav} from "react-bootstrap";
 import {useContext} from "react";
 import {MenuContext} from "./Rudi";
 
@@ -14,11 +14,10 @@ const NavMenu = () => {
 
     return (
         <div>
-            <Navbar
-
+            <Nav
                 className="flex-column"
-                variant="dark"
-                // activeKey={activeNav}
+                variant="pills"
+                activeKey={activeNav}
                 // onSelect={handleActiveNav}
             >
                 {
@@ -39,7 +38,7 @@ const NavMenu = () => {
                     })
                 }
 
-            </Navbar>
+            </Nav>
         </div>
     )
 }

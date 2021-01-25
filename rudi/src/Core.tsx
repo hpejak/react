@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 
 const Core = () => {
@@ -27,4 +27,4 @@ const Core = () => {
     )
 }
 
-export default Core;
+export default React.memo(Core);

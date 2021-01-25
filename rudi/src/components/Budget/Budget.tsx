@@ -1,6 +1,7 @@
 import {ListGroup} from "react-bootstrap";
 import useFetch from "../../hooks/useFetch";
 import BudgetItem from "./BudgetItem";
+import React from "react";
 
 const api = 'https://pejaklab.ddns.net/Financije/Getters/getBudgetView.php'
 
@@ -21,4 +22,4 @@ const Budget = () => {
     );
 }
 
-export default Budget;
+export default React.memo(Budget);

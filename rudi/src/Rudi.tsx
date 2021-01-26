@@ -116,7 +116,14 @@ const Rudi = () => {
                             </div>
                         </Col>
                         <Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}} id="additionalMenu">
-                            <Budget/>
+                            <Switch>
+                                <Route exact path='/'>
+
+                                </Route>
+                                <Route path='/finance'>
+                                    <Budget/>
+                                </Route>
+                            </Switch>
                         </Col>
                     </Row>
                 </div>

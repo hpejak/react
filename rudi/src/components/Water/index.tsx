@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button,  Row} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import ConsumptionInput from "./ConsumptionInput";
 
 const participant = [
@@ -55,19 +55,29 @@ class Water extends Component{
             cursor: 'pointer'
         }
 
+        const btnStyle = {
+            marginTop: '30px',
+        }
+
         return (
             <div className="col-xl-12 col-lg-12 col-md-12">
-                <Row style={style}>
-                    <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>
-                    <ConsumptionInput entry={participant[1]} consumptionSum={this.state.consumptionSecondFlore} editFieldFunction={this.consumptionChangeHandler}/>
-                    <ConsumptionInput entry={participant[2]} consumptionSum={this.state.consumptionFirsFlore} editFieldFunction={this.consumptionChangeHandler}/>
-                    <ConsumptionInput entry={participant[3]} consumptionSum={this.state.consumptionLittleHouse} editFieldFunction={this.consumptionChangeHandler}/>
-                </Row>
-
                 <Row>
-                    <Button onClick={this.consumptionHandler}>Calculate</Button>
+                    <Col>
+                        <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>
+                    </Col>
+                    <Col>
+                        <ConsumptionInput entry={participant[1]} consumptionSum={this.state.consumptionSecondFlore} editFieldFunction={this.consumptionChangeHandler}/>
+                    </Col>
+                    <Col>
+                        <ConsumptionInput entry={participant[2]} consumptionSum={this.state.consumptionFirsFlore} editFieldFunction={this.consumptionChangeHandler}/>
+                    </Col>
+                    <Col>
+                        <ConsumptionInput entry={participant[3]} consumptionSum={this.state.consumptionLittleHouse} editFieldFunction={this.consumptionChangeHandler}/>
+                    </Col>
+                    <Col>
+                        <Button style={btnStyle} onClick={this.consumptionHandler}>Calculate</Button>
+                    </Col>
                 </Row>
-
 
                 <Row>
                     <h6>Full Price for water consumption is {this.state.monthPrice} kn</h6>

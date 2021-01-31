@@ -1,6 +1,7 @@
 import {Component} from "react";
 import {Button, Col, Row} from "react-bootstrap";
 import ConsumptionInput from "./ConsumptionInput";
+import PreviousWaterEntry from "./PreviousWaterEntry";
 
 const participant = [
     {id:1, name: 'consumptionSum', description: 'Consumption sum'},
@@ -20,7 +21,10 @@ class Water extends Component{
         consumptionSum: 0,
         firstFlorePrice: 0,
         secondFlorePrice: 0,
-        monthPrice: 0
+        monthPrice: 0,
+        oldData : {
+            data: [],
+        }
     }
 
     consumptionHandler = () => {
@@ -49,18 +53,46 @@ class Water extends Component{
         })
     }
 
+    componentDidMount() {
+        this.getOldData();
+        // let headers = new Headers();
+
+        // headers.set('Authorization', 'Basic ' + btoa('demoUsername:demoPassword'))
+        // fetch('https://pejaklab.ddns.net/api/api.php',{method: 'GET', headers: headers})
+        //     .then((response) => response.json())
+        //     .then((jsonRes) => this.setState({oldData:jsonRes}))
+        //     .catch(error => console.log(error));
+    }
+
+
+    getOldData = () => {
+        let headers = new Headers();
+
+        headers.set('Authorization', 'Basic ' + btoa('demoUsername:demoPassword'))
+        fetch('https://pejaklab.ddns.net/api/api.php?task=getLastInput',{method: 'GET', headers: headers})
+            .then((response) => response.json())
+            .then((jsonRes) => this.setState({oldData:jsonRes}))
+            .catch(error => console.log(error));
+    }
 
     render() {
-        const style = {
-            cursor: 'pointer'
-        }
+
+        console.log(this.state.oldData)
 
         const btnStyle = {
             marginTop: '30px',
         }
 
+        const previousStyle = {
+            marginBottom: '50px',
+        }
+
         return (
             <div className="col-xl-12 col-lg-12 col-md-12">
+                <Row style={previousStyle}>
+                    <PreviousWaterEntry  oldData={this.state.oldData.data[0] || this.state.oldData}/>
+                </Row>
+
                 <Row>
                     <Col>
                         <ConsumptionInput entry={participant[0]} consumptionSum={this.state.consumptionSum} editFieldFunction={this.consumptionChangeHandler}/>

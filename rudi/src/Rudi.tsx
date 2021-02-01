@@ -72,7 +72,8 @@ const Rudi = () => {
 
     const style =  {
         backgroundColor: 'rgba(217, 217, 219, 0.5)',
-        borderRadius: '15px',
+        height: 'auto'
+        // borderRadius: '15px',
     }
 
     return (
@@ -84,7 +85,7 @@ const Rudi = () => {
                         <Col xl={{span: 1}} lg={{span: 1}} md={{span: 1}} className="menuCol" id="menu">
                             <NavMenu/>
                         </Col>
-                        <Col xl={{span: 9}} lg={{span: 9}} md={{span: 9}} id="page">
+                        <Col xl={{span: 11}} lg={{span: 11}} md={{span: 11}} id="page">
                             <div className="middleCol">
                                 <Switch>
                                     <Route exact path='/'>
@@ -115,16 +116,16 @@ const Rudi = () => {
                                 </Switch>
                             </div>
                         </Col>
-                        <Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}} id="additionalMenu">
-                            <Switch>
-                                <Route exact path='/'>
+                        {/*<Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}} id="additionalMenu">*/}
+                        {/*    <Switch>*/}
+                        {/*        <Route exact path='/'>*/}
 
-                                </Route>
-                                <Route path='/finance'>
-                                    <Budget/>
-                                </Route>
-                            </Switch>
-                        </Col>
+                        {/*        </Route>*/}
+                        {/*        <Route path='/finance'>*/}
+                        {/*            <Budget/>*/}
+                        {/*        </Route>*/}
+                        {/*    </Switch>*/}
+                        {/*</Col>*/}
                     </Row>
                 </div>
             </Router>

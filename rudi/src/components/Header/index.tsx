@@ -11,7 +11,7 @@ const Header = ({rootName, onStart}) => {
             color: 'navy',
             backgroundColor: 'rgba(169, 177, 199,0.5)',
             height: '80px',
-            borderRadius: '15px',
+            // borderRadius: '15px',
             border: '3px solid #919bba',
             boxShadow: '1px 1px 5px 5px #919bba',
             alignContent: 'center',

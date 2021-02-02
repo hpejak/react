@@ -64,7 +64,23 @@ code {
 
 .titleRow {
   margin-bottom: 30px;
+  color: white;
+  background-color: #2F2FA2;
+  box-shadow: 1px 1px 5px 5px #919bba;
+  height: 80px;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-family: sans-serif;
+  font-weight: bold;
 }
+
+.titleRow:hover {
+  box-shadow: 10px 10px 10px 10px #919bba;
+  transform: scale(0.99);
+}
+
 
 .titleCol {
   text-align: center;

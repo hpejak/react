@@ -1,4 +1,4 @@
-import React, {useReducer, useState} from "react";
+import React, {MutableRefObject, useEffect, useReducer, useRef, useState} from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
 import FinanceModal from "./FinanceModal";
 import financeReducer from "./FinanceReducer";
@@ -26,6 +26,13 @@ const Finance = () => {
         expenseAmount: undefined, expenseCategory: '', budgetCategory: ''})
 
     const [state, dispatch] = useReducer(financeReducer, defaultExpense)
+
+    const elementPosition = useRef<HTMLInputElement>(null) as MutableRefObject<HTMLInputElement>
+
+    useEffect(() => {
+        console.log(elementPosition);
+        elementPosition.current.focus();
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -70,9 +77,9 @@ const Finance = () => {
 
                         <Row>
                             <Col xl={7}>
-                                <Form.Group controlId='description'>
+                                <Form.Group controlId='description'  >
                                     <Form.Label className='financeLabel'>Description</Form.Label>
-                                    <Form.Control name='expenseDescription' type='text' value={expense.expenseDescription} onChange={handleChange} />
+                                    <Form.Control name='expenseDescription' type='text' value={expense.expenseDescription} onChange={handleChange} ref={elementPosition}/>
                                 </Form.Group>
                             </Col>
 
@@ -100,7 +107,7 @@ const Finance = () => {
                             </Col>
 
                             <Col xl={4}>
-                                <Form.Group controlId='budgetCategory'>
+                                <Form.Group controlId='budgetCategory' >
                                     <Form.Label className='financeLabel'>Budget Category</Form.Label>
                                     <Form.Control name='budgetCategory' type='text' value={expense.budgetCategory} onChange={handleChange} />
                                 </Form.Group>

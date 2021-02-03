@@ -2,7 +2,6 @@ import NavMenu from './NavMenu'
 import { Col, Row} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import Core from "./Core";
-import Budget from "./components/Budget/Budget";
 import Additions from "./Additions";
 import Finance from "./components/Finance/Finance";
 import Error from "./components/Error/"

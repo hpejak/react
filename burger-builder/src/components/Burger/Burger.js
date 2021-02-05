@@ -1,6 +1,5 @@
 import './Burger.css'
 import BurgerIngredient from "./BurgerIngredient/BurgerIngredient";
-import {element} from "prop-types";
 
 const burger = (props) => {
 

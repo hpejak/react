@@ -68,6 +68,21 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
+        const order = {
+            ingredients: this.state.ingredients,
+            price: this.state.totalPrice,
+            customer: {
+                name: 'My Name',
+
+            }
+        }
+        const requestData = {
+            method: 'POST',
+        }
+
+        fetch('https://burger-bar-12aa6-default-rtdb.firebaseio.com/orders.json', requestData)
+            .then(result => console.log(result))
+
         alert("Purchase Done");
     }
 

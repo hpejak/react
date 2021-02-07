@@ -30,7 +30,6 @@ const Finance = () => {
     const elementPosition = useRef<HTMLInputElement>(null) as MutableRefObject<HTMLInputElement>
 
     useEffect(() => {
-        console.log(elementPosition);
         elementPosition.current.focus();
     }, []);
 

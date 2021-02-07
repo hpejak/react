@@ -4,6 +4,7 @@ import useFetch from "../../hooks/useFetch";
 
 const api = 'https://pejaklab.ddns.net/Financije/Getters/getBudgetView.php'
 
+
 const BudgetDetail = React.memo(() => {
     const {name} = useParams<{name: string}>();
     const [amount, setAmount] = useState<number| undefined>(undefined);
@@ -14,6 +15,7 @@ const BudgetDetail = React.memo(() => {
         (budgetCat && amount !== budgetCat.Amount) && setAmount(budgetCat.Amount)
 
     },[dataGrid, name, amount]);
+
 
     return (
         <>

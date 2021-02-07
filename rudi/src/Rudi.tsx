@@ -60,7 +60,8 @@ const Rudi = () => {
         window.addEventListener('resize', () => {
             setWindowSize(window.innerWidth)
         });
-        console.log('Window size is ' + windowSize)
+
+        if (windowSize < 768) console.log("Windows size is: " + windowSize);
 
         return () => {
             window.removeEventListener('resize', () => {
@@ -72,7 +73,6 @@ const Rudi = () => {
     const style =  {
         backgroundColor: 'rgba(217, 217, 219, 0.5)',
         height: 'auto'
-        // borderRadius: '15px',
     }
 
     return (

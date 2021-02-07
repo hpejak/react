@@ -1,4 +1,4 @@
-import {Col, Row} from "react-bootstrap";
+import {Col, Row, Button} from "react-bootstrap";
 import PropTypes from "prop-types";
 
 const PreviousWaterEntry = ({oldData}) => {
@@ -9,7 +9,7 @@ const PreviousWaterEntry = ({oldData}) => {
 
     return(
         <>
-            <Row style={firstColStyle} className="col-xl-12 col-lg-12 col-md-12">
+            <Row style={firstColStyle} className="col-xl-11 col-lg-11 col-md-11">
                 <Col>Name</Col>
                 <Col>Sum</Col>
                 <Col>First Flore</Col>
@@ -17,7 +17,7 @@ const PreviousWaterEntry = ({oldData}) => {
                 <Col>Yard House</Col>
             </Row>
 
-            <Row className="col-xl-12 col-lg-12 col-md-12">
+            <Row className="col-xl-11 col-lg-11 col-md-11">
                 <Col>Consumption State</Col>
                 <Col>{oldData.cons_state_reported || null}</Col>
                 <Col>{oldData.cons_state_first_flore || null}</Col>
@@ -25,13 +25,15 @@ const PreviousWaterEntry = ({oldData}) => {
                 <Col>{oldData.cons_state_yard_house || null}</Col>
             </Row>
 
-            <Row className="col-xl-12 col-lg-12 col-md-12">
+            <Row className="col-xl-11 col-lg-11 col-md-11">
                 <Col>Consumption</Col>
                 <Col>{oldData.consumption_all || null}</Col>
                 <Col>{oldData.consumption_first_flore || null}</Col>
                 <Col>{oldData.consumption_ground_flore || null}</Col>
                 <Col>{oldData.consumption_yard_house || null}</Col>
             </Row>
+
+            <Button>Edit</Button>
         </>
     );
 }

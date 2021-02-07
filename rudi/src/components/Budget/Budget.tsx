@@ -15,7 +15,7 @@ const Budget = () => {
         <>
             <ListGroup>
                 {Object.entries(dataGrid).map(([key,budget]) => {
-                    return (<BudgetItem key={key} {...budget}/>)
+                    return (<BudgetItem key={key} {...budget} />)
                 })}
             </ListGroup>
         </>

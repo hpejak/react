@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 const BudgetItem = ({Name,Amount}) => {
 
+
     return(
         <ListGroup.Item>
             <div className="budgetCategory"><Link to={`/${Name}`}>{Name}</Link></div>

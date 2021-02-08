@@ -1,27 +1,44 @@
 import Modal from "../../components/UI/Modal/Modal";
-import {useEffect, useState} from "react";
+import {Component} from "react";
 
-const WithErrorHandler = (Componenet, fetch) => {
 
-    const [error, setError] = useState(null);
 
-    useEffect(
-        console.log(s)
-    )
+const withErrorHandler = (WComponent,axios) => {
+    return class extends Component {
 
-    return (props) => {
-        return (
-            <>
-                <Modal
-                    show={error}
-                    clicked={setError(null)}>
-                    {error? error.message: null}
-                </Modal>
-                <Componenet {...props}/>
-            </>
+        state = {
+            error: null
+        }
+
+        componentDidMount() {
+            axios.interceptors.request.use(req => {
+                this.setState({error: null});
+                return req;
+            })
+
+            axios.interceptors.response.use(res => res, error => {
+                this.setState({error: error});
+            })
+        }
+
+        removeError = () => {
+            this.setState({error: null})
+        }
+
+        render() {
+            return (
+                <>
+                    <Modal
+                        show={this.state.error}
+                        modalClosed={this.removeError}>
+                        {this.state.error ? this.state.error.message : null}
+                    </Modal>
+                    <WComponent {...this.props}/>
+                </>
             );
-    }
+        }
 
+    }
 }
 
-export default  WithErrorHandler;
+export default  withErrorHandler;

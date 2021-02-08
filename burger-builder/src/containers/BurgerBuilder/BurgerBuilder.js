@@ -5,7 +5,7 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import Spinner from '../../components/UI/Spinner/Spinner'
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
+import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
 import axios from "axios";
 
 const INGREDIENT_PRICE = {
@@ -89,13 +89,8 @@ class BurgerBuilder extends Component {
             },
             deliveryMethod: '1 day'
         }
-        const requestData = {
-            method: 'POST',
-            body: JSON.stringify(order)
-        }
 
-        // fetch('https://burger-bar-12aa6-default-rtdb.firebaseio.com/orders.json', requestData)
-        axios.post('https://burger-bar-12aa6-default-rtdb.firebaseio.com/orders.json', order)
+        axios.post('/orders.json', order)
             .then(result => {
                 this.setState({loading: false, purchasing: false})
                 console.log(result)
@@ -140,4 +135,4 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default withErrorHandler(BurgerBuilder, axios);
+export default WithErrorHandler(BurgerBuilder, axios);

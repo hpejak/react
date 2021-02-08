@@ -10,15 +10,21 @@ const withErrorHandler = (WComponent,axios) => {
             error: null
         }
 
-        componentDidMount() {
-            axios.interceptors.request.use(req => {
+        componentWillMount() {
+            this.reqInte = axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
             })
 
-            axios.interceptors.response.use(res => res, error => {
+            this.resInte = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error});
             })
+        }
+
+        componentWillUnmount() {
+            axios.interceptors.request.eject(this.reqInte);
+            axios.interceptors.request.eject(this.resInte)
+
         }
 
         removeError = () => {

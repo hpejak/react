@@ -1,13 +1,13 @@
 import {Nav, NavDropdown} from "react-bootstrap";
 import {useContext, useState} from "react";
 import {MenuContext} from "./Rudi";
-import {Link} from "react-router-dom";
+import {Link, withRouter } from "react-router-dom";
 
-const NavMenu = () => {
+const NavMenu = (props) => {
 
     const {menuRootItems, dropdownMenuItems} = useContext(MenuContext);
 
-    const [activeNav, setActiveNav] = useState('/')
+    const [activeNav, setActiveNav] = useState(props.location.pathname)
     const [activeTutorial, setActiveTutorial] = useState<boolean>(false)
 
     const handleClick = (eventKey: any) => {
@@ -56,4 +56,4 @@ const NavMenu = () => {
 }
 
 
-export default NavMenu;
+export default withRouter(NavMenu);

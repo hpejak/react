@@ -11,18 +11,19 @@ import Water from "./components/Water/";
 import File from "./components/File";
 import Practise from "./components/Practice";
 import Header from "./components/Header";
+import Footer from "./components/Footer/Footer";
 
 const menuItems = [
     {id: 0, name: "Home", link: "/", tooltip: "Start", description: "None for now"},
-    {id: 1, name: "Finance", link: "finance", tooltip: "Third Item", description: "None for now"},
-    {id: 2, name: "Water", link: "water", tooltip: "Forth Item", description: "None for now"},
-    {id: 3, name: "FileReader", link: "fileReader", tooltip: "Fifth Item", description: "None for now"},
+    {id: 1, name: "Finance", link: "/finance", tooltip: "Third Item", description: "None for now"},
+    {id: 2, name: "Water", link: "/water", tooltip: "Forth Item", description: "None for now"},
+    {id: 3, name: "FileReader", link: "/fileReader", tooltip: "Fifth Item", description: "None for now"},
 ];
 
 const dropdownMenuItems = [
-    {id: 0, name: "Core", link: "core", tooltip: "First Item", description: "None for now"},
-    {id: 1, name: "Additions", link: "additions", tooltip: "Second Item", description: "None for now"},
-    {id: 2, name: "Practise", link: "practise", tooltip: "Sixth Item", description: "None for now"}
+    {id: 0, name: "Core", link: "/core", tooltip: "First Item", description: "None for now"},
+    {id: 1, name: "Additions", link: "/additions", tooltip: "Second Item", description: "None for now"},
+    {id: 2, name: "Practise", link: "/practise", tooltip: "Sixth Item", description: "None for now"}
 ]
 
 export const MenuContext = React.createContext<any | null>(null);
@@ -72,7 +73,7 @@ const Rudi = () => {
 
     const style =  {
         backgroundColor: 'rgba(217, 217, 219, 0.5)',
-        height: 'auto'
+        minHeight: '100%'
     }
 
     return (
@@ -82,14 +83,14 @@ const Rudi = () => {
                     <Header rootName={rootName} onStart={onStart}/>
                     <Row >
                         <Col xl={{span: 1}} lg={{span: 1}} md={{span: 1}} className="menuCol" id="menu">
-                            <NavMenu/>
+                            <Route path='/'>
+                                <NavMenu/>
+                            </Route>
                         </Col>
                         <Col xl={{span: 11}} lg={{span: 11}} md={{span: 11}} id="page">
                             <div className="middleCol">
                                 <Switch>
-                                    <Route exact path='/'>
-
-                                    </Route>
+                                    <Route exact path='/' />
                                     <Route path='/core'>
                                         <Core/>
                                     </Route>
@@ -115,17 +116,8 @@ const Rudi = () => {
                                 </Switch>
                             </div>
                         </Col>
-                        {/*<Col xl={{span: 2}} lg={{span: 2}} md={{span: 2}} id="additionalMenu">*/}
-                        {/*    <Switch>*/}
-                        {/*        <Route exact path='/'>*/}
-
-                        {/*        </Route>*/}
-                        {/*        <Route path='/finance'>*/}
-                        {/*            <Budget/>*/}
-                        {/*        </Route>*/}
-                        {/*    </Switch>*/}
-                        {/*</Col>*/}
                     </Row>
+                    <Footer />
                 </div>
             </Router>
         </MenuContext.Provider>

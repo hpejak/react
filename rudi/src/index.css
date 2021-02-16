@@ -78,7 +78,7 @@ code {
 
 .titleRow:hover {
   box-shadow: 10px 10px 10px 10px #919bba;
-  transform: scale(0.99);
+  /*transform: scale(0.99);*/
 }
 
 
@@ -102,16 +102,6 @@ code {
 
 .menuCol {
   padding-left: 0 !important;
-}
-
-.budgetCategory {
-  font-size: small;
-  font-weight: bold;
-  color: #282c34;
-}
-
-.budgetAmount {
-  font-size: x-small;
 }
 
 .core {

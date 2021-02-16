@@ -34,6 +34,7 @@ class Water extends Component{
             consumption_ground_flore: null,
             consumption_yard_house: null,
             consumption_all: null,
+            consumption_reported: null,
             consumption_discrepancy: null,
             consumption_bill: null,
             bill_amount: null,
@@ -109,7 +110,19 @@ class Water extends Component{
     submitDataHandler = () => {
 
         const bill_payed: any = this.state.dbData.bill_payed_date;
-        const bill_payed_string = bill_payed ? "'" + bill_payed.toString() + "'" : bill_payed
+        const bill_payed_string = bill_payed ? "'" + bill_payed.toString() + "'" : bill_payed;
+
+        const received_external: any = this.state.dbData.received_external;
+        const received_external_string = received_external ? "'" + received_external.toString() + "'" : received_external;
+
+        const read_date: any = this.state.dbData.read_date;
+        const read_date_string = read_date ? "'" + read_date.toString() + "'" : read_date;
+
+        let consumption_first_flore = this.state.dbData.consumption_first_flore;
+        let consumption_ground_flore = this.state.dbData.consumption_ground_flore;
+        let consumption_yard_house = this.state.dbData.consumption_yard_house;
+        const consumption_all = (consumption_first_flore ? parseFloat(consumption_first_flore) : 0) +
+            (consumption_ground_flore ? parseFloat(consumption_ground_flore): 0) + (consumption_yard_house ? parseFloat(consumption_yard_house): 0);
 
         const bodyInput = {
             year: this.state.dbData.year,
@@ -118,9 +131,25 @@ class Water extends Component{
             bill_amount: this.state.dbData.bill_amount,
             cons_state_reported: this.state.dbData.cons_state_reported,
             cons_state_bill: this.state.dbData.cons_state_bill,
-            consumption_first_flore: this.state.dbData.consumption_first_flore
+            consumption_first_flore: consumption_first_flore,
+            consumption_ground_flore: consumption_ground_flore,
+            consumption_yard_house: consumption_yard_house,
+            consumption_discrepancy: this.state.dbData.consumption_discrepancy,
+            consumption_bill: this.state.dbData.consumption_bill,
+            consumption_reported: this.state.dbData.consumption_reported,
+            consumption_all: consumption_all,
+            amount_external: this.state.dbData.amount_external,
+            amount_communicated: this.state.dbData.amount_communicated,
+            received_external: received_external_string,
+            cons_state_first_flore: this.state.dbData.cons_state_first_flore,
+            cons_state_ground_flore: this.state.dbData.cons_state_ground_flore,
+            cons_state_yard_house: this.state.dbData.cons_state_yard_house,
+            amount_first_flore: this.state.dbData.amount_first_flore,
+            amount_ground_flore: this.state.dbData.amount_ground_flore,
+            amount_yard_house: this.state.dbData.amount_yard_house,
+            amount_discrepancy: this.state.dbData.amount_discrepancy,
+            read_date: read_date_string
         };
-
 
         const requestOptions = {
             method: "POST",
@@ -129,7 +158,9 @@ class Water extends Component{
         }
 
         fetch('https://pejaklab.ddns.net/api/insertWater.php',requestOptions)
-            .then((output)=> output.json())
+            .then((output)=> {
+                return output.json()
+            })
             .then((response) => console.log(response))
             .catch(error => console.log(error))
     }

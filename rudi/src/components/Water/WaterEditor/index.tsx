@@ -48,7 +48,7 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
 
                 <Col>
                     <Row>
-                        <Form.Group >
+                        <Form.Group onDoubleClick={enableEdit}>
                             <Form.Label column="sm">Reported m<sup>3</sup></Form.Label>
                             <Form.Control name="consumption_reported"
                                           type="number"
@@ -91,7 +91,7 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
             <Row>
                 <Col>
                     <Row>
-                        <Form.Group >
+                        <Form.Group onDoubleClick={enableEdit}>
                             <Form.Label column="sm">First Flore Consumption m<sup>3</sup></Form.Label>
                             <Form.Control name="consumption_first_flore"
                                           type="number"
@@ -100,7 +100,7 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
-                        <Form.Group >
+                        <Form.Group onDoubleClick={enableEdit}>
                             <Form.Label column="sm" >Ground Flore Consumption m<sup>3</sup></Form.Label>
                             <Form.Control name="consumption_ground_flore"
                                           type="number"
@@ -109,7 +109,7 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
-                        <Form.Group >
+                        <Form.Group onDoubleClick={enableEdit}>
                             <Form.Label column="sm">Yard Flore Consumption m<sup>3</sup></Form.Label>
                             <Form.Control name="consumption_yard_house"
                                           type="number"
@@ -134,22 +134,28 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
                     <Row>
                         <Form.Group >
                             <Form.Label column="sm">Amount External</Form.Label>
-                            <Form.Control name="amount_external" type="number"
+                            <Form.Control name="amount_external"
+                                          type="number"
                                           value={dbData.amount_external.value || ''}
+                                          disabled={!dbData.amount_external.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Amount Communicated</Form.Label>
-                            <Form.Control name="amount_communicated" type="number"
+                            <Form.Control name="amount_communicated"
+                                          type="number"
                                           value={dbData.amount_communicated.value || ''}
+                                          disabled={!dbData.amount_communicated.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">External Received</Form.Label>
-                            <Form.Control name="received_external" type="date"
+                            <Form.Control name="received_external"
+                                          type="date"
                                           value={dbData.received_external.value || ''}
+                                          disabled={!dbData.received_external.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
                     </Row>
@@ -161,29 +167,37 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
                     <Row>
                         <Form.Group >
                             <Form.Label column="sm">First Flore m<sup>3</sup></Form.Label>
-                            <Form.Control name="cons_state_first_flore" type="number"
+                            <Form.Control name="cons_state_first_flore"
+                                          type="number"
                                           value={dbData.cons_state_first_flore.value || ''}
+                                          disabled={!dbData.cons_state_first_flore.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Ground Flore m<sup>3</sup></Form.Label>
-                            <Form.Control name="cons_state_ground_flore" type="number"
+                            <Form.Control name="cons_state_ground_flore"
+                                          type="number"
                                           value={dbData.cons_state_ground_flore.value || ''}
+                                          disabled={!dbData.cons_state_ground_flore.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Yard Flore m<sup>3</sup></Form.Label>
-                            <Form.Control name="cons_state_yard_house" type="number"
+                            <Form.Control name="cons_state_yard_house"
+                                          type="number"
                                           value={dbData.cons_state_yard_house.value || ''}
+                                          disabled={!dbData.cons_state_yard_house.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Reported State m<sup>3</sup></Form.Label>
-                            <Form.Control name="cons_state_reported" type="number"
+                            <Form.Control name="cons_state_reported"
+                                          type="number"
                                           value={dbData.cons_state_reported.value || ''}
+                                          disabled={!dbData.cons_state_reported.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
@@ -194,29 +208,37 @@ const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) 
                     <Row>
                         <Form.Group >
                             <Form.Label column="sm">First Flore Amount</Form.Label>
-                            <Form.Control name="amount_first_flore" type="number"
+                            <Form.Control name="amount_first_flore"
+                                          type="number"
                                           value={dbData.amount_first_flore.value || ''}
+                                          disabled={!dbData.amount_first_flore.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Ground Flore Amount</Form.Label>
-                            <Form.Control name="amount_ground_flore" type="number"
+                            <Form.Control name="amount_ground_flore"
+                                          type="number"
                                           value={dbData.amount_ground_flore.value || ''}
+                                          disabled={!dbData.amount_ground_flore.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Yard Flore Amount</Form.Label>
-                            <Form.Control name="amount_yard_house" type="number"
+                            <Form.Control name="amount_yard_house"
+                                          type="number"
                                           value={dbData.amount_yard_house.value || ''}
+                                          disabled={!dbData.amount_yard_house.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 
                         <Form.Group >
                             <Form.Label column="sm">Discrepancy Amount</Form.Label>
-                            <Form.Control name="amount_discrepancy" type="number"
+                            <Form.Control name="amount_discrepancy"
+                                          type="number"
                                           value={dbData.amount_discrepancy.value || ''}
+                                          disabled={!dbData.amount_discrepancy.edit}
                                           onChange={editChangeHandler}/>
                         </Form.Group>
 

@@ -1,17 +1,18 @@
 import NavMenu from './NavMenu'
 import { Col, Row} from "react-bootstrap";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, Suspense} from "react";
 import Core from "./Core";
 import Additions from "./Additions";
 import Finance from "./components/Finance/Finance";
 import Error from "./components/Error/"
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import BudgetDetail from "./components/Budget/BudgetDetail";
-import Water from "./components/Water/";
 import File from "./components/File";
 import Practise from "./components/Practice";
 import Header from "./components/Header";
 import Footer from "./components/Footer/Footer";
+
+const Water = React.lazy(() => import('./components/Water/'));
 
 const menuItems = [
     {id: 0, name: "Home", link: "/", tooltip: "Start", description: "None for now"},
@@ -100,9 +101,7 @@ const Rudi = () => {
                                     <Route path='/finance'>
                                         <Finance/>
                                     </Route>
-                                    <Route path='/water'>
-                                        <Water />
-                                    </Route>
+                                    <Route path='/water' render={() => ( <Suspense fallback={<div> Loading...</div>}> <Water/> </Suspense>)} />
                                     <Route path='/fileReader'>
                                         <File/>
                                     </Route>

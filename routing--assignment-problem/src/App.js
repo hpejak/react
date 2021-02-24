@@ -8,10 +8,10 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <Router >
           <Switch>
             <Route exact path='/' />
-
+            <Route path='/coursers' render={Courses}/>
+            <Route path='/users' render={Users}/>
           </Switch>
 
           <ol style={{textAlign: 'left'}}>
@@ -24,7 +24,6 @@ class App extends Component {
             <li>Add a 404 error page and render it for any unknown routes</li>
             <li>Redirect requests to /all-courses to /courses (=> Your "Courses" page)</li>
           </ol>
-        </Router>
       </div>
     );
   }

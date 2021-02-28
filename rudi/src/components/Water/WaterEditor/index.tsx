@@ -1,14 +1,21 @@
 import {Form, Row, Col, Button} from "react-bootstrap";
 import React from "react";
+import InsertError from "../../Notices/Insert/InsertError";
 
 
 //TODO Discrepancy consumption disabled. Double click enables it
 //TODO ALl Consumption Disabled. Calculated from state
 
-const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit}) => {
+const WaterEditor = ({dbData, editChangeHandler,submitDataHandler, enableEdit, insertError}) => {
+
+    const errorMessage = insertError ? <InsertError message={insertError}/> : null
+
+
+
 
     return (
         <>
+            {errorMessage}
             <Row>
                 <Col>
                     <Row>

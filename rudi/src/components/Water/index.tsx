@@ -22,6 +22,7 @@ class Water extends Component{
         firstFlorePrice: 0,
         secondFlorePrice: 0,
         monthPrice: 0,
+        inputError: '',
         dbData:{
             year: {value: this.nowYear.toString()},
             month: {value: this.nowMonth.toString()},
@@ -168,7 +169,10 @@ class Water extends Component{
             .then((output)=> {
                 return output.json()
             })
-            .then((response) => console.log(response))
+            .then((response) => {
+                console.log(response)
+                this.setState({inputError: response.error})
+            })
             .catch(error => console.log(error))
     }
 
@@ -192,7 +196,11 @@ class Water extends Component{
                             consumptionLittleHouse={this.state.consumptionLittleHouse}
                 />
 
-                <WaterEditor dbData={this.state.dbData} editChangeHandler={this.editChangeHandler} submitDataHandler={this.submitDataHandler} enableEdit={this.enableEdit}/>
+                <WaterEditor dbData={this.state.dbData}
+                             editChangeHandler={this.editChangeHandler}
+                             submitDataHandler={this.submitDataHandler}
+                             enableEdit={this.enableEdit}
+                             insertError={this.state.inputError}/>
 
                 <WaterCalculation show={this.state.showInput}
                     monthPrice={this.state.monthPrice}
